@@ -11,12 +11,9 @@ fun agoToText(seconds: Int) {
         (seconds < (60 * 60)) -> {
             val minutes = seconds / 60
             when {
-                minutes == 1 -> println("был(а) минуту назад")
-                minutes == 2 || minutes == 3 || minutes == 4 -> println("был(а) $minutes минуты назад")
-                minutes == 22 || minutes == 23 || minutes == 24 -> println("был(а) $minutes минуты назад")
-                minutes == 32 || minutes == 33 || minutes == 34 -> println("был(а) $minutes минуты назад")
-                minutes == 42 || minutes == 43 || minutes == 44 -> println("был(а) $minutes минуты назад")
-                minutes == 52 || minutes == 53 || minutes == 54 -> println("был(а) $minutes минуты назад")
+                minutes in 11..14 -> println("был(а) $minutes минут назад") // сразу "отсекаем" исключения
+                minutes % 10 in 2..4 -> println("был(а) $minutes минуты назад")
+                minutes % 10 == 1 -> println("был(а) $minutes минуту назад")
                 else -> println("был(а) $minutes минут назад")
 
             }
@@ -25,13 +22,11 @@ fun agoToText(seconds: Int) {
         (seconds < 24 * 60 * 60) -> {
             val hours = seconds / 60 / 60
             when {
-                hours == 1 -> println("был(а) час назад")
-                hours == 2 || hours == 3 || hours == 4 -> println("был(а) $hours часа назад")
-                hours == 22 || hours == 23 || hours == 24 -> println("был(а) $hours часа назад")
-                hours == 32 || hours == 33 || hours == 34 -> println("был(а) $hours часа назад")
-                hours == 42 || hours == 43 || hours == 44 -> println("был(а) $hours часа назад")
-                hours == 52 || hours == 53 || hours == 54 -> println("был(а) $hours часа назад")
+                hours in 11..14 -> println("был(а) $hours часов назад") // сразу "отсекаем" исключения
+                hours % 10 in 2..4 -> println("был(а) $hours часа назад")
+                hours % 10 == 1 -> println("был(а) $hours час назад")
                 else -> println("был(а) $hours часов назад")
+
 
             }
         }
