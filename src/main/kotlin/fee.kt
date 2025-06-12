@@ -1,14 +1,14 @@
 fun main() {
-    val result = feeCalculation("Мир", 75_000, 0, 0)
+    val result = feeCalculation("Мир")
 
     println(result)
 }
 
 fun feeCalculation(
     cardType: String,
-    transition: Int,
-    transitionPerMonth: Int,
-    transitionPerDay: Int
+    transition: Int = 75_000,
+    transitionPerMonth: Int = 0,
+    transitionPerDay: Int = 0
 ): Int {
 
     val maxTransitionPerMonth = 600_000
@@ -22,8 +22,8 @@ fun feeCalculation(
     return when (cardType) {
 
         "MasterCard" -> {
-            if (transition > 75_000)
-                (transition / 100 * 0.6 + 20).toInt()
+            if ((transitionPerMonth + transition) > 75_000)
+                (((transitionPerMonth + transition) - 75_000) / 100 * 0.6 + 20).toInt()
             else 0
         }
 
